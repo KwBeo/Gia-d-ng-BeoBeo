@@ -70,10 +70,15 @@ Mục tiêu hiệu năng, khả năng truy cập, trình duyệt hỗ trợ, yê
 
 ## 5. Quy tắc và giới hạn đã xác nhận
 
-- Công nghệ định hướng: Next.js + TypeScript, Flask + Python và PostgreSQL.
+- Frontend: Node.js 24 LTS, npm, Next.js stable, App Router, TypeScript strict mode, Tailwind CSS và ESLint.
+- Backend: Python 3.13, Flask 3.x, pip/`venv`, SQLAlchemy, Flask-Migrate và REST API.
+- Cơ sở dữ liệu và môi trường local: PostgreSQL, Docker Desktop và Docker Compose.
+- Cộng tác mã nguồn: Git và GitHub.
 - Phương thức thanh toán trong phạm vi hiện biết: COD.
+- Nội dung tài liệu và UI hướng tới người dùng: tiếng Việt; giao diện hiện đại, responsive.
+- Các lựa chọn công nghệ trên là quyết định đã duyệt, chỉ thay đổi khi chủ dự án cho phép rõ ràng.
 - Chưa có phê duyệt cho cổng thanh toán điện tử hoặc yêu cầu nghiệp vụ khác ngoài các nội dung ở trên.
 
 ## 6. Tiêu chí nghiệm thu
 
-Tiêu chí kiểm thử chi tiết cho từng yêu cầu, dữ liệu kiểm thử, mức độ bao phủ và người phê duyệt: **TBD**. Không xem các yêu cầu trong tài liệu này là đã triển khai nếu chưa được xác minh bằng kiểm thử.
+Tiêu chí kiểm thử chi tiết cho từng yêu cầu, dữ liệu kiểm thử, mức độ bao phủ và người phê duyệt: **TBD**. Không xem các yêu cầu trong tài liệu này là đã triển khai nếu chưa được xác minh bằng kiểm thử. Stack đã được phê duyệt nhưng ứng dụng chưa được scaffold; xem [Kế hoạch phát triển](./DEVELOPMENT_PLAN.md) để biết trạng thái setup local.

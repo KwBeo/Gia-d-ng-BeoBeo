@@ -2,7 +2,9 @@
 
 ## 1. Trạng thái và nguyên tắc
 
-Tài liệu này mô tả mô hình dữ liệu khái niệm cho PostgreSQL, dựa trên phạm vi hiện biết. Đây không phải schema đã được triển khai hoặc phê duyệt. Tên bảng, kiểu dữ liệu, ràng buộc, chỉ mục và quy tắc lưu trữ chi tiết đều cần được xác nhận; các mục chưa rõ được đánh dấu **TBD**.
+Tài liệu này mô tả mô hình dữ liệu khái niệm cho PostgreSQL, dựa trên phạm vi hiện biết. PostgreSQL là cơ sở dữ liệu đã duyệt; backend sẽ dùng SQLAlchemy và Flask-Migrate. Đây chưa phải schema đã triển khai hoặc phê duyệt. Tên bảng, kiểu dữ liệu, ràng buộc, chỉ mục và quy tắc lưu trữ chi tiết đều cần được xác nhận; các mục chưa rõ được đánh dấu **TBD**.
+
+Local development dự kiến chạy PostgreSQL bằng Docker Desktop và Docker Compose. Chưa có Compose file hoặc database container trong repository.
 
 ## 2. Thực thể khái niệm
 
@@ -47,6 +49,8 @@ Các thuộc tính dưới đây là những câu hỏi thiết kế, không ph�
 
 Kiểu dữ liệu cụ thể, mức cô lập giao dịch, chiến lược khóa tồn kho, chỉ mục tìm kiếm và thời hạn lưu dữ liệu: **TBD**.
 
+Khi thiết kế schema, giá trị tiền cần dùng kiểu decimal chính xác phù hợp với PostgreSQL/SQLAlchemy, không dùng số dấu phẩy động.
+
 ## 6. Quan hệ khái quát
 
 ```text
@@ -69,4 +73,3 @@ Sơ đồ thể hiện quan hệ khái niệm; số lượng quan hệ và mô h
 - Trạng thái đơn hàng/COD và chuyển trạng thái hợp lệ là gì?
 - Chính sách xóa, lưu trữ và bảo vệ dữ liệu cá nhân ra sao?
 - Có cần lịch sử điều chỉnh tồn kho hoặc nhật ký thao tác quản trị không?
-

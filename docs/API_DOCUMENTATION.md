@@ -2,11 +2,12 @@
 
 ## 1. Trạng thái tài liệu
 
-Tài liệu này là bản định hướng API cho kiến trúc Next.js, Flask và PostgreSQL. Chưa có API được xác nhận là đã triển khai. Đường dẫn và phương thức bên dưới là **đề xuất để thảo luận**, không phải hợp đồng API đã phê duyệt. Phiên bản, schema request/response, mã lỗi và chi tiết xác thực: **TBD**.
+Tài liệu này là bản định hướng REST API cho kiến trúc Next.js, Flask 3.x, SQLAlchemy và PostgreSQL. Stack đã được duyệt nhưng chưa có API nào được xác nhận là đã triển khai. Đường dẫn và phương thức bên dưới là **đề xuất để thảo luận**, không phải hợp đồng API đã phê duyệt. Phiên bản API, schema request/response, mã lỗi và chi tiết xác thực: **TBD**.
 
 ## 2. Quy ước chung cần thống nhất
 
 - Frontend giao tiếp với backend Flask qua API.
+- Backend sử dụng Python 3.13 và Flask 3.x; SQLAlchemy là lớp persistence và Flask-Migrate quản lý schema migration.
 - Nội dung người dùng hiển thị bằng tiếng Việt; tên trường API có thể theo quy ước kỹ thuật thống nhất sau.
 - Backend cần xác thực dữ liệu đầu vào, danh tính và quyền truy cập.
 - Không trả thông tin bí mật hoặc thông tin xác thực nhạy cảm trong phản hồi.
@@ -68,4 +69,3 @@ Schema phản hồi lỗi, mã lỗi nghiệp vụ, ánh xạ HTTP status, thôn
 - Chốt cơ chế xác thực, CORS/CSRF và phiên.
 - Xác định quy tắc tồn kho, giá và trạng thái đơn trong checkout.
 - Viết kiểm thử hợp đồng API sau khi có schema được duyệt.
-

@@ -5,13 +5,25 @@
 - **Project:** HomeEase, a university software engineering project.
 - **Purpose:** Household goods e-commerce website.
 - **Frontend:** Next.js with TypeScript.
-- **Backend:** Python with Flask.
+- **Backend:** Python 3.13 with Flask 3.x.
 - **Database:** PostgreSQL.
 - **Payment:** Cash on Delivery (COD).
 - **User-facing language:** Vietnamese.
 - **UI:** Modern and responsive.
 
 Treat these details as the intended project direction. Inspect the repository before assuming a feature, framework, or architectural layer is already implemented.
+
+## Approved Technology Decisions
+
+The following stack is approved and must be treated as fixed unless the user explicitly authorizes a change:
+
+- Frontend: Node.js 24 LTS, npm, the stable Next.js release, App Router, TypeScript strict mode, Tailwind CSS, and ESLint.
+- Backend: Python 3.13, Flask 3.x, pip with Python `venv`, SQLAlchemy, Flask-Migrate, and a REST API.
+- Database and local services: PostgreSQL with Docker Desktop and Docker Compose.
+- Project collaboration: Git and GitHub.
+- Product constraints: Vietnamese documentation and user-facing UI, responsive modern design, and COD only.
+
+Do not silently substitute versions, frameworks, package managers, or payment methods. The exact stable Next.js patch version is selected when the frontend is scaffolded.
 
 ## Repository and Change Safety
 
@@ -22,8 +34,10 @@ Treat these details as the intended project direction. Inspect the repository be
   - `feature/<feature-name>` for features
   - `fix/<bug-name>` for bug fixes
   - `docs/<document-name>` for documentation
+- Use `develop` as the integration branch. Start work from an updated `develop` in a dedicated `feature/`, `fix/`, or `docs/` branch and propose changes back to `develop` through GitHub. Do not work directly on `main` or `develop`.
 - Do not commit or push unless explicitly requested.
 - Keep changes focused on the request. Do not create application source code unless requested.
+- During the initialization/documentation phase, do not add application source code, install packages, or start database containers without explicit approval.
 
 ## Architecture and Implementation
 
@@ -53,3 +67,4 @@ Treat these details as the intended project direction. Inspect the repository be
 - Do not claim a feature or change works unless it has been tested. Clearly state what was and was not verified.
 - Explain every important file created or modified and summarize the change.
 - If tests cannot be run, state the reason and any remaining validation needed.
+- Keep project documentation in Vietnamese. See `docs/DEVELOPMENT_PLAN.md` for the local setup and development workflow, and the other `docs/` files for product and architecture decisions.

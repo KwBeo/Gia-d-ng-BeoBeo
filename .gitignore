@@ -1,0 +1,21 @@
+# Environment configuration
+.env
+.env.*
+!.env.example
+
+# Node.js and Next.js
+node_modules/
+.next/
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Test and build output
+coverage/
+.pytest_cache/
+dist/
+build/

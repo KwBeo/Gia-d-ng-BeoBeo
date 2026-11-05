@@ -17,11 +17,11 @@ Kế hoạch này chia nhỏ việc phát triển website thương mại điện
 
 ### Giai đoạn 2 — Thiết lập nền tảng dự án
 
-- Tổ chức frontend Next.js + TypeScript, backend Python + Flask và PostgreSQL thành các phần tách biệt.
+- Tổ chức frontend Node.js 24 LTS/npm/Next.js stable App Router/TypeScript strict mode/Tailwind CSS/ESLint, backend Python 3.13/Flask 3.x/SQLAlchemy/Flask-Migrate và PostgreSQL thành các phần tách biệt.
 - Thống nhất cấu hình theo môi trường, quy ước mã nguồn, kiểm tra đầu vào và xử lý lỗi.
-- Thiết lập quy trình chạy ứng dụng và kiểm thử phù hợp với môi trường của nhóm.
+- Thiết lập quy trình chạy ứng dụng và kiểm thử phù hợp với môi trường của nhóm bằng Docker Desktop/Docker Compose cho PostgreSQL.
 
-Chi tiết cấu trúc thư mục, phiên bản, công cụ và môi trường: **TBD**.
+Các lựa chọn stack ở trên đã được duyệt và cố định trừ khi chủ dự án phê duyệt thay đổi. Repository hiện chưa có application scaffold, manifest dependencies hoặc Compose file.
 
 ### Giai đoạn 3 — Xác thực, vai trò và dữ liệu sản phẩm
 
@@ -77,3 +77,62 @@ Phạm vi tự động hóa kiểm thử và môi trường bàn giao: **TBD**.
 ## 5. Theo dõi tiến độ
 
 Trạng thái từng giai đoạn, người phụ trách, thời hạn, định nghĩa hoàn thành và cách quản lý thay đổi: **TBD**. Cập nhật tiến độ sau khi nhóm thống nhất kế hoạch thực thi.
+
+## 6. Thiết lập phát triển local
+
+### 6.1 Công cụ cần có
+
+- Git và quyền truy cập repository trên GitHub.
+- Node.js 24 LTS và npm.
+- Python 3.13.
+- Docker Desktop có Docker Compose.
+
+Kiểm tra phiên bản sau khi cài công cụ:
+
+```powershell
+git --version
+node --version
+npm --version
+python --version
+docker --version
+docker compose version
+```
+
+### 6.2 Quy trình dự kiến sau khi scaffold
+
+Các bước này mô tả quy trình mục tiêu; một số file được tham chiếu chưa tồn tại và chưa thể chạy ở trạng thái repository hiện tại.
+
+1. Tạo/đi vào virtual environment backend từ thư mục repository:
+
+   ```powershell
+   python -m venv backend\.venv
+   .\backend\.venv\Scripts\Activate.ps1
+   ```
+
+2. Cài dependencies backend từ manifest/lock đã được thêm ở giai đoạn scaffold; tên và định dạng file dependency sẽ được thống nhất khi scaffold.
+3. Cài dependencies frontend bằng `npm install` trong `frontend/` sau khi `package.json` và lockfile được tạo.
+4. Sao chép các file `.env.example` tương ứng thành file `.env` local và điền giá trị chỉ dùng trên máy phát triển. Không commit file `.env` hoặc bí mật.
+5. Khởi chạy PostgreSQL bằng `docker compose up -d` từ thư mục có `compose.yaml`. Compose file và tên service hiện chưa được tạo; không chạy container cho đến khi file được phê duyệt/đưa vào repository.
+6. Chạy database migration bằng Flask-Migrate sau khi ứng dụng Flask, cấu hình database và migration đầu tiên được tạo.
+7. Chạy frontend/backend bằng scripts/entry points do scaffold tạo ra. Tên lệnh, cổng và health check sẽ được ghi lại khi chúng tồn tại.
+
+Không giả định ứng dụng, migration, `.env.example`, `compose.yaml` hoặc dependencies đã tồn tại. Không chạy lệnh cài đặt hay khởi tạo container như một phần của bước tài liệu này.
+
+## 7. Quy trình Git và GitHub
+
+1. `develop` là nhánh tích hợp; `main` dành cho các bản phát hành theo quyết định của nhóm.
+2. Trước khi bắt đầu, kiểm tra `git status` và cập nhật `develop` từ remote bằng fast-forward.
+3. Tạo nhánh riêng từ `develop` theo quy ước `feature/<feature-name>`, `fix/<bug-name>` hoặc `docs/<document-name>`.
+4. Thực hiện thay đổi, chạy kiểm tra liên quan và mở Pull Request trên GitHub hướng vào `develop`.
+5. Không làm việc trực tiếp trên `main`/`develop`; không commit hoặc push trừ khi được yêu cầu rõ ràng.
+6. Chỉ đưa thay đổi từ `develop` sang `main` theo quy trình phát hành được nhóm thống nhất.
+
+Ví dụ bắt đầu nhánh tài liệu trong PowerShell:
+
+```powershell
+git switch develop
+git pull --ff-only
+git switch -c docs/project-setup
+```
+
+Sau khi có `package.json` và `package-lock.json`, ưu tiên `npm ci` trong `frontend/` để cài đúng dependencies đã khóa. Sau khi backend có `requirements.txt`, cài bằng `python -m pip install -r backend\requirements.txt` trong virtual environment. Các file dependency này chưa tồn tại và chưa được tạo trong bước tài liệu.

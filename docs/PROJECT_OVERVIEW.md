@@ -50,17 +50,22 @@ Quy tắc giá, vận chuyển, hủy/đổi trả, tồn kho khi đặt hàng v
 
 ## 6. Công nghệ định hướng
 
-- Frontend: Next.js và TypeScript.
-- Backend: Python và Flask.
-- Cơ sở dữ liệu: PostgreSQL.
+- Frontend: Node.js 24 LTS, npm, phiên bản Next.js stable tại thời điểm khởi tạo, App Router, TypeScript strict mode, Tailwind CSS và ESLint.
+- Backend: Python 3.13, Flask 3.x, pip với `venv`, SQLAlchemy, Flask-Migrate và REST API.
+- Cơ sở dữ liệu/local services: PostgreSQL, Docker Desktop và Docker Compose.
+- Cộng tác: Git và GitHub.
 
-Đây là kiến trúc mục tiêu theo thông tin dự án, không phải xác nhận rằng các thành phần đã có trong mã nguồn. Phiên bản, cách triển khai và môi trường chạy: **TBD**. Mô tả ở [Kiến trúc hệ thống](./SYSTEM_ARCHITECTURE.md).
+Các lựa chọn trên đã được phê duyệt và được xem là cố định trừ khi chủ dự án cho phép thay đổi rõ ràng. Phiên bản patch Next.js stable được chọn khi tạo scaffold. Đây là stack đã duyệt, không có nghĩa các thành phần đã được cài đặt hoặc triển khai. Mô tả ở [Kiến trúc hệ thống](./SYSTEM_ARCHITECTURE.md).
 
-## 7. Ngoài phạm vi đã xác nhận
+## 7. Trạng thái repository
+
+Repository hiện có tài liệu dự án và README hướng dẫn cho frontend/backend; chưa có mã nguồn ứng dụng, manifest dependencies hay cấu hình Docker Compose. Không xem các chức năng mô tả trong tài liệu là đã triển khai.
+
+## 8. Ngoài phạm vi đã xác nhận
 
 Chưa có quyết định xác nhận các tính năng như thanh toán trực tuyến, khuyến mãi, đánh giá sản phẩm, vận chuyển tích hợp hoặc nhiều ngôn ngữ. Không coi các tính năng này là yêu cầu cho đến khi được phê duyệt.
 
-## 8. Tài liệu liên quan
+## 9. Tài liệu liên quan
 
 - [Yêu cầu](./REQUIREMENTS.md)
 - [Kiến trúc hệ thống](./SYSTEM_ARCHITECTURE.md)
